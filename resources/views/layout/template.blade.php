@@ -18,7 +18,7 @@
             <a href="/guru" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Data Guru</span>
             </a>
-            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <a href="/kelas" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Data Kelas</span>
             </a>
             <a href="/" class="d-flex align-items-center text-white text-decoration-none">
