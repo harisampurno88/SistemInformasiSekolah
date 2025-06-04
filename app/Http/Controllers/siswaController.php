@@ -19,7 +19,7 @@ class siswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('siswa.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'Hi';
     }
 
     /**
