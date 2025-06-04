@@ -15,7 +15,7 @@
             <a href="/siswa" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Data Siswa</span>
             </a>
-            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <a href="/guru" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Data Guru</span>
             </a>
             <a href="/" class="d-flex align-items-center text-white text-decoration-none">

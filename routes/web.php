@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\guruController;
 use App\Http\Controllers\siswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,3 +9,5 @@ Route::get('/', function () {
 });
 
 Route::resource('siswa', siswaController::class);
+
+Route::resource('guru', guruController::class);
