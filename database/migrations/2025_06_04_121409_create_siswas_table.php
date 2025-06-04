@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('nisn');
             $table->primary('nisn');
             $table->string('nama');
-            $table->integer('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->text('alamat');
             $table->integer('no_telepon');
