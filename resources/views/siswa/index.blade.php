@@ -1,3 +1,6 @@
+ @section('head')
+     Data Siswa
+ @endsection
  @extends('layout.template')
  <!-- START DATA -->
  @section('content')

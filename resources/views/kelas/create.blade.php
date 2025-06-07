@@ -1,3 +1,6 @@
+@section('head')
+     Data Kelas
+ @endsection
 @extends('layout.template')
 <!-- START FORM -->
 @section('content')

@@ -1,3 +1,6 @@
+ @section('head')
+     Data Guru
+ @endsection
  @extends('layout.template')
  <!-- START DATA -->
  @section('content')
