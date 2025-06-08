@@ -11,6 +11,12 @@
             <a href='{{ url('siswa') }}' class="btn btn-secondary">
                 << Kembali</a>
                     <div class="mb-3 row">
+                        <label for="id_siswa" class="col-sm-2 col-form-label">Id Siswa</label>
+                        <div class="col-sm-10">
+                            {{ $data->id_siswa }}
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
                             {{ $data->nisn }}
@@ -21,6 +27,13 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name='nama' value="{{ $data->nama }}"
                                 id="nama">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">Lahir</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name='tanggal_lahir' value="{{ $data->tanggal_lahir }}"
+                                id="tanggal_lahir">
                         </div>
                     </div>
                     <div class="mb-3 row">

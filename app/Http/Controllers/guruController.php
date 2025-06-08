@@ -17,6 +17,8 @@ class guruController extends Controller
         $katakunci = $request->get('katakunci');
         if (strlen($katakunci)) {
             $data = guru::where('nip', 'like', "%$katakunci%")
+                ->orWhere('tanggal_lahir', 'like', "%$katakunci%")
+                ->orWhere('id_guru', 'like', "%$katakunci%")
                 ->orWhere('nama', 'like', "%$katakunci%")
                 ->orWhere('jenis_kelamin', 'like', "%$katakunci%")
                 ->orWhere('alamat', 'like', "%$katakunci%")
@@ -44,8 +46,10 @@ class guruController extends Controller
      */
     public function store(Request $request)
     {
+        Session::flash('id_guru', $request->id_guru);
         Session::flash('nip', $request->nip);
         Session::flash('nama', $request->nama);
+        Session::flash('tanggal_lahir', $request->tanggal_lahir);
         Session::flash('jenis_kelamin', $request->jenis_kelamin);
         Session::flash('alamat', $request->alamat);
         Session::flash('no_telepon', $request->no_telepon);
@@ -54,19 +58,23 @@ class guruController extends Controller
 
         $request->validate(
             [
+                'id_guru' => 'required|integer',
                 'nip' => 'required|integer|unique:guru,nip',
                 'nama' => 'required|string|max:255',
+                'tanggal_lahir' => 'required|date',
                 'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
                 'alamat' => 'required|string|max:500',
-                'no_telepon' => 'required|integer',
+                'no_telepon' => 'required|string|max:15',
                 'id_mata_pelajaran' => 'required|integer',
                 'jabatan' => 'required|string|in:PNS,HONOR'
             ],
             [
+                'id_guru.required' => 'ID Guru harus diisi',
                 'nip.required' => 'NIP harus diisi',
                 'nip.integer' => 'NIP harus berupa angka',
                 'nip.unique' => 'NIP sudah terdaftar',
                 'nama.required' => 'Nama harus diisi',
+                'tanggal_lahir.required' => 'Tanggal lahir harus diisi',
                 'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
                 'alamat.required' => 'Alamat harus diisi',
                 'no_telepon.required' => 'No telepon harus diisi',
@@ -75,8 +83,10 @@ class guruController extends Controller
             ]
         );
         $data = [
+            'id_guru' => $request->id_guru,
             'nip' => $request->nip,
             'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
@@ -112,14 +122,16 @@ class guruController extends Controller
         $request->validate(
             [
                 'nama' => 'required|string|max:255',
+                'tanggal_lahir' => 'required|date',
                 'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
                 'alamat' => 'required|string|max:500',
-                'no_telepon' => 'required|integer',
+                'no_telepon' => 'required|string|max:15',
                 'id_mata_pelajaran' => 'required|integer',
                 'jabatan' => 'required|string|in:PNS,HONOR'
             ],
             [
                 'nama.required' => 'Nama harus diisi',
+                'tanggal_lahir.required' => 'Tanggal lahir harus diisi',
                 'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
                 'alamat.required' => 'Alamat harus diisi',
                 'no_telepon.required' => 'No telepon harus diisi',
@@ -129,6 +141,7 @@ class guruController extends Controller
         );
         $data = [
             'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,

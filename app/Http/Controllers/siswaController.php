@@ -16,6 +16,8 @@ class siswaController extends Controller
         $katakunci = $request->get('katakunci');
         if (strlen($katakunci)) {
             $data = siswa::where('nisn', 'like', "%$katakunci%")
+                ->orWhere('tanggal_lahir', 'like', "%$katakunci%")
+                ->orWhere('id_siswa', 'like', "%$katakunci%")
                 ->orWhere('nama', 'like', "%$katakunci%")
                 ->orWhere('jenis_kelamin', 'like', "%$katakunci%")
                 ->orWhere('alamat', 'like', "%$katakunci%")
@@ -43,37 +45,47 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
+        Session::flash('id_siswa', $request->id_siswa);
         Session::flash('nisn', $request->nisn);
         Session::flash('nama', $request->nama);
+        Session::flash('tanggal_lahir', $request->tanggal_lahir);
         Session::flash('jenis_kelamin', $request->jenis_kelamin);
         Session::flash('alamat', $request->alamat);
         Session::flash('no_telepon', $request->no_telepon);
         Session::flash('id_kelas', $request->id_kelas);
         Session::flash('id_tahun_ajaran', $request->id_tahun_ajaran);
 
-        $request->validate([
-            'nisn' => 'required|integer|unique:siswa,nisn',
-            'nama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
-            'alamat' => 'required|string|max:500',
-            'no_telepon' => 'required|integer',
-            'id_kelas' => 'required|integer',
-            'id_tahun_ajaran' => 'required|integer'
-        ],
-        [
-            'nisn.required' => 'NISN harus diisi',
-            'nisn.integer' => 'NISN harus berupa angka',
-            'nisn.unique' => 'NISN sudah terdaftar',
-            'nama.required' => 'Nama harus diisi',
-            'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
-            'alamat.required' => 'Alamat harus diisi',
-            'no_telepon.required' => 'No telepon harus diisi',
-            'id_kelas.required' => 'Kelas harus dipilih',
-            'id_tahun_ajaran.required' => 'Tahun ajaran harus dipilih'
-        ]);
+        $request->validate(
+            [
+                'id_siswa' => 'required|integer',
+                'nisn' => 'required|integer|unique:siswa,nisn',
+                'nama' => 'required|string|max:255',
+                'tanggal_lahir' => 'required|date',
+                'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
+                'alamat' => 'required|string|max:500',
+                'no_telepon' => 'required|string|max:15',
+                'id_kelas' => 'required|integer',
+                'id_tahun_ajaran' => 'required|integer'
+            ],
+            [
+                'id_siswa.required' => 'ID Siswa harus diisi',
+                'nisn.required' => 'NISN harus diisi',
+                'nisn.integer' => 'NISN harus berupa angka',
+                'nisn.unique' => 'NISN sudah terdaftar',
+                'nama.required' => 'Nama harus diisi',
+                'tanggal_lahir.required' => 'Tanggal lahir harus diisi',
+                'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
+                'alamat.required' => 'Alamat harus diisi',
+                'no_telepon.required' => 'No telepon harus diisi',
+                'id_kelas.required' => 'Kelas harus dipilih',
+                'id_tahun_ajaran.required' => 'Tahun ajaran harus dipilih'
+            ]
+        );
         $data = [
+            'id_siswa' => $request->id_siswa,
             'nisn' => $request->nisn,
             'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
@@ -106,24 +118,29 @@ class siswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
-            'alamat' => 'required|string|max:500',
-            'no_telepon' => 'required|integer',
-            'id_kelas' => 'required|integer',
-            'id_tahun_ajaran' => 'required|integer'
-        ],
-        [
-            'nama.required' => 'Nama harus diisi',
-            'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
-            'alamat.required' => 'Alamat harus diisi',
-            'no_telepon.required' => 'No telepon harus diisi',
-            'id_kelas.required' => 'Kelas harus dipilih',
-            'id_tahun_ajaran.required' => 'Tahun ajaran harus dipilih'
-        ]);
+        $request->validate(
+            [
+                'nama' => 'required|string|max:255',
+                'tanggal_lahir' => 'required|date',
+                'jenis_kelamin' => 'required|string|in:Laki-Laki,Perempuan',
+                'alamat' => 'required|string|max:500',
+                'no_telepon' => 'required|string|max:15',
+                'id_kelas' => 'required|integer',
+                'id_tahun_ajaran' => 'required|integer'
+            ],
+            [
+                'nama.required' => 'Nama harus diisi',
+                'tanggal_lahir.required' => 'Tanggal lahir harus diisi',
+                'jenis_kelamin.required' => 'Jenis kelamin harus dipilih',
+                'alamat.required' => 'Alamat harus diisi',
+                'no_telepon.required' => 'No telepon harus diisi',
+                'id_kelas.required' => 'Kelas harus dipilih',
+                'id_tahun_ajaran.required' => 'Tahun ajaran harus dipilih'
+            ]
+        );
         $data = [
             'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,

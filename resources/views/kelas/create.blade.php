@@ -1,6 +1,6 @@
 @section('head')
-     Data Kelas
- @endsection
+    Data Kelas
+@endsection
 @extends('layout.template')
 <!-- START FORM -->
 @section('content')
@@ -19,29 +19,33 @@
                     <div class="mb-3 row">
                         <label for="nama_kelas" class="col-sm-2 col-form-label">Nama Kelas</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='nama_kelas' value="{{ Session::get('nama_kelas') }}"
-                                id="nama_kelas">
+                            <input type="text" class="form-control" name='nama_kelas'
+                                value="{{ Session::get('nama_kelas') }}" id="nama_kelas">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="tingkat" class="col-sm-2 col-form-label">Tingkat</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='tingkat' value="{{ Session::get('tingkat') }}"
-                                id="tingkat">
+                            <select class="form-select" name="tingkat" id="tingkat" required>
+                                <option value="" disabled selected>Pilih Tingkat</option>
+                                <option value="X">X</option>
+                                <option value="XI">XI</option>
+                                <option value="XII">XII</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Jurusan</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='jurusan'
-                                value="{{ Session::get('jurusan') }}" id="jurusan">
+                            <input type="text" class="form-control" name='jurusan' value="{{ Session::get('jurusan') }}"
+                                id="jurusan">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="nama_guru" class="col-sm-2 col-form-label">Nama Guru</label>
+                        <label for="id_wali_kelas" class="col-sm-2 col-form-label">Id Wali Kelas</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='nama_guru'
-                                value="{{ Session::get('nama_guru') }}" id="nama_guru">
+                            <input type="integer" class="form-control" name='id_wali_kelas'
+                                value="{{ Session::get('id_wali_kelas') }}" id="id_wali_kelas">
                         </div>
                     </div>
                     <div class="mb-3 row">

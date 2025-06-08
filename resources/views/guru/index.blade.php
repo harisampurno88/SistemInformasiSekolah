@@ -23,13 +23,15 @@
              <thead>
                  <tr>
                      <th class="col-md-1">NO</th>
+                     <th class="col-md-1">Id Guru</th>
                      <th class="col-md-1">NIP</th>
-                     <th class="col-md-3">Nama Guru</th>
-                     <th class="col-md-2">Jenis Kelamin</th>
-                     <th class="col-md-2">Alamat</th>
-                     <th class="col-md-2">No Telepon</th>
-                     <th class="col-md-2">Id Mata Pelajaran</th>
-                     <th class="col-md-2">Jabatan</th>
+                     <th class="col-md-1">Nama Guru</th>
+                     <th class="col-md-1">Tanggal Lahir</th>
+                     <th class="col-md-1">Jenis Kelamin</th>
+                     <th class="col-md-1">Alamat</th>
+                     <th class="col-md-1">No Telepon</th>
+                     <th class="col-md-1">Id Mata Pelajaran</th>
+                     <th class="col-md-1">Jabatan</th>
                  </tr>
              </thead>
              <tbody>
@@ -37,8 +39,10 @@
                  @foreach ($data as $item)
                      <tr>
                          <td>{{ $i }}</td>
+                         <td>{{ $item->id_guru }}</td>
                          <td>{{ $item->nip }}</td>
                          <td>{{ $item->nama }}</td>
+                         <td>{{ $item->tanggal_lahir }}</td>
                          <td>{{ $item->jenis_kelamin }}</td>
                          <td>{{ $item->alamat }}</td>
                          <td>{{ $item->no_telepon }}</td>
@@ -46,11 +50,12 @@
                          <td>{{ $item->jabatan }}</td>
                          <td class="d-inline-flex">
                              <a href='{{ url('guru/' . $item->nip . '/edit') }}' class="btn btn-warning btn-sm">Edit</a>
-                             <form onsubmit="return confirm('Yakin akan menghapus data?')" action="{{ url('guru/' . $item->nip) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                             <form onsubmit="return confirm('Yakin akan menghapus data?')"
+                                 action="{{ url('guru/' . $item->nip) }}" method="POST">
+                                 @csrf
+                                 @method('DELETE')
                                  <button type="submit" name="submit" class="btn btn-danger btn-sm">
-                                    Del
+                                     Del
                                  </button>
                              </form>
                          </td>

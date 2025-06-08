@@ -11,7 +11,7 @@ class kelas extends Model
         'nama_kelas',
         'tingkat',
         'jurusan',
-        'nama_guru',
+        'id_wali_kelas',
     ];
     protected $table = 'kelas';
     public $timestamps = false;

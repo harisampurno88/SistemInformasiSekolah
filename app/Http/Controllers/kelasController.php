@@ -19,7 +19,7 @@ class kelasController extends Controller
                 ->orWhere('nama_kelas', 'like', "%$katakunci%")
                 ->orWhere('tingkat', 'like', "%$katakunci%")
                 ->orWhere('jurusan', 'like', "%$katakunci%")
-                ->orWhere('nama_guru', 'like', "%$katakunci%")
+                ->orWhere('id_wali_kelas', 'like', "%$katakunci%")
                 ->paginate(3);
             $data->appends(['katakunci' => $katakunci]);
         } else {
@@ -45,15 +45,15 @@ class kelasController extends Controller
         Session::flash('nama_kelas', $request->nama_kelas);
         Session::flash('tingkat', $request->tingkat);
         Session::flash('jurusan', $request->jurusan);
-        Session::flash('nama_guru', $request->nama_guru);
+        Session::flash('id_wali_kelas', $request->id_wali_kelas);
 
         $request->validate(
             [
                 'id_kelas' => 'required|integer|unique:kelas,id_kelas',
                 'nama_kelas' => 'required|string|max:255',
-                'tingkat' => 'required|integer|',
+                'tingkat' => 'required|string|in:X,XI,XII',
                 'jurusan' => 'required|string|max:255',
-                'nama_guru' => 'required|string|max:255',
+                'id_wali_kelas' => 'required|integer',
             ],
             [
                 'id_kelas.required' => 'Id Kelas harus diisi',
@@ -62,7 +62,7 @@ class kelasController extends Controller
                 'nama_kelas.required' => 'Nama Kelas harus diisi',
                 'tingkat.required' => 'Tingkat harus dipilih',
                 'jurusan' => 'Jurusan harus diisi',
-                'nama_guru' => 'Nama Guru harus diisi',
+                'id_wali_kelas' => 'id _wali_kelas harus diisi',
             ]
         );
         $data = [
@@ -70,7 +70,7 @@ class kelasController extends Controller
             'nama_kelas' => $request->nama_kelas,
             'tingkat' => $request->tingkat,
             'jurusan' => $request->jurusan,
-            'nama_guru' => $request->nama_guru,
+            'id_wali_kelas' => $request->id_wali_kelas,
         ];
         kelas::create($data);
         return redirect()->to('kelas')->with('success', 'Data kelas berhasil disimpan');
@@ -101,22 +101,22 @@ class kelasController extends Controller
         $request->validate(
             [
                 'nama_kelas' => 'required|string|max:255',
-                'tingkat' => 'required|string|',
+                'tingkat' => 'required|string|in:X,XI,XII',
                 'jurusan' => 'required|string|max:255',
-                'nama_guru' => 'required|string|max:255',
+                'id_wali_kelas' => 'required|integer',
             ],
             [
                 'nama_kelas.required' => 'Nama Kelas harus diisi',
-                'tingkat.required' => 'Jenis kelamin harus dipilih',
+                'tingkat.required' => 'Tingkat harus dipilih',
                 'jurusan' => 'Jurusan harus diisi',
-                'nama_guru' => 'Nama Guru telepon harus diisi',
+                'id_wali_kelas' => 'id_wali_kelas harus diisi',
             ]
         );
         $data = [
             'nama_kelas' => $request->nama_kelas,
             'tingkat' => $request->tingkat,
             'jurusan' => $request->jurusan,
-            'nama_guru' => $request->nama_guru,
+            'id_wali_kelas' => $request->id_wali_kelas,
         ];
         kelas::where('id_kelas', $id)->update($data);
         return redirect()->to('kelas')->with('success', 'Data kelas berhasil diubah');

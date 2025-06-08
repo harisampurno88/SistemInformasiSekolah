@@ -1,10 +1,10 @@
 @section('head')
-     Data Kelas
- @endsection
+    Data Kelas
+@endsection
 @extends('layout.template')
 <!-- START FORM -->
 @section('content')
-    <form action='{{ url('kelas/'.$data->id_kelas) }}' method='post'>
+    <form action='{{ url('kelas/' . $data->id_kelas) }}' method='post'>
         @csrf
         @method('PUT')
         <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -26,8 +26,12 @@
                     <div class="mb-3 row">
                         <label for="tingkat" class="col-sm-2 col-form-label">Tingkat</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='tingkat' value="{{ $data->tingkat }}"
-                                id="tingkat">
+                            <select class="form-select" name="tingkat" id="tingkat" required>
+                                <option value="" disabled selected>Pilih Tingkat</option>
+                                <option value="X">X</option>
+                                <option value="XI">XI</option>
+                                <option value="XII">XII</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -38,10 +42,10 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="nama_guru" class="col-sm-2 col-form-label">Nama Guru</label>
+                        <label for="id_wali_kelas" class="col-sm-2 col-form-label">Id Wali Kelas</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='nama_guru' value="{{ $data->nama_guru }}"
-                                id="nama_guru">
+                            <input type="integer" class="form-control" name='id_wali_kelas' value="{{ $data->id_wali_kelas }}"
+                                id="id_wali_kelas">
                         </div>
                     </div>
                     <div class="mb-3 row">
