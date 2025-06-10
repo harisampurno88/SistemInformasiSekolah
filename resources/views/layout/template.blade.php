@@ -24,7 +24,7 @@
             <a href="/matapelajaran" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Mata Pelajaran</span>
             </a>
-            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <a href="/tahunajaran" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Tahun Ajaran</span>
             </a>
             <a href="/" class="d-flex align-items-center text-white text-decoration-none">

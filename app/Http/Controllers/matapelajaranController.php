@@ -90,7 +90,7 @@ class matapelajaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $request->validate(
+        $request->validate(
             [
                 'nama_mata_pelajaran' => 'required|string|max:255',
                 'kkm' => 'required|integer|min:0|max:100',
@@ -115,7 +115,7 @@ class matapelajaranController extends Controller
      */
     public function destroy(string $id)
     {
-         matapelajaran::where('id_mata_pelajaran', $id)->delete();
+        matapelajaran::where('id_mata_pelajaran', $id)->delete();
         return redirect()->to('matapelajaran')->with('success', 'Data Mata Pelajaran berhasil dihapus');
     }
 }

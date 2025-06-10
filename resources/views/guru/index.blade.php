@@ -23,14 +23,14 @@
              <thead>
                  <tr>
                      <th class="col-md-1">NO</th>
-                     <th class="col-md-1">Id Guru</th>
+                     <th class="col-md-2">Id Guru</th>
                      <th class="col-md-1">NIP</th>
-                     <th class="col-md-1">Nama Guru</th>
-                     <th class="col-md-1">Tanggal Lahir</th>
-                     <th class="col-md-1">Jenis Kelamin</th>
+                     <th class="col-md-2">Nama Guru</th>
+                     <th class="col-md-2">Tanggal Lahir</th>
+                     <th class="col-md-2">Jenis Kelamin</th>
                      <th class="col-md-1">Alamat</th>
-                     <th class="col-md-1">No Telepon</th>
-                     <th class="col-md-1">Id Mata Pelajaran</th>
+                     <th class="col-md-2">No Telepon</th>
+                     <th class="col-md-2">Id Mata Pelajaran</th>
                      <th class="col-md-1">Jabatan</th>
                  </tr>
              </thead>

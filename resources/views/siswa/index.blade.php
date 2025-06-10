@@ -23,15 +23,15 @@
              <thead>
                  <tr>
                      <th class="col-md-1">NO</th>
-                     <th class="col-md-1">Id Siswa</th>
+                     <th class="col-md-2">Id Siswa</th>
                      <th class="col-md-1">NISN</th>
-                     <th class="col-md-1">Nama Siswa</th>
-                     <th class="col-md-1">Tanggal Lahir</th>
-                     <th class="col-md-1">Jenis Kelamin</th>
+                     <th class="col-md-2">Nama Siswa</th>
+                     <th class="col-md-2">Tanggal Lahir</th>
+                     <th class="col-md-2">Jenis Kelamin</th>
                      <th class="col-md-1">Alamat</th>
-                     <th class="col-md-1">No Telepon</th>
-                     <th class="col-md-1">Id Kelas</th>
-                     <th class="col-md-1">Id Tahun Ajaran</th>
+                     <th class="col-md-2">No Telepon</th>
+                     <th class="col-md-2">Id Kelas</th>
+                     <th class="col-md-3">Id Tahun Ajaran</th>
                  </tr>
              </thead>
              <tbody>
