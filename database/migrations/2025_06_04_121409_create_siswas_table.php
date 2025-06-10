@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->text('alamat');
             $table->string('no_telepon', 15);
-            $table->integer('id_kelas');
+            $table->unsignedInteger('id_kelas');
+            $table->foreign('id_kelas')
+                ->references('id_kelas')
+                ->on('kelas')
+                ->onDelete('restrict');
             $table->integer('id_tahun_ajaran');
         });
     }

@@ -127,6 +127,14 @@ class kelasController extends Controller
      */
     public function destroy(string $id)
     {
+        $kelas = Kelas::where('id_kelas', $id)->firstOrFail();
+
+        // Cek apakah masih ada siswa terkait
+        if ($kelas->siswa()->exists()) {
+            return redirect()->to('kelas')->with('error', 'Tidak bisa menghapus kelas karena masih memiliki siswa.');
+        }
+
+        // Jika tidak ada siswa, lanjutkan hapus
         kelas::where('id_kelas', $id)->delete();
         return redirect()->to('kelas')->with('success', 'Data kelas berhasil dihapus');
     }

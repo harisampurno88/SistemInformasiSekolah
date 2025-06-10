@@ -64,8 +64,17 @@
                     <div class="mb-3 row">
                         <label for="id_kelas" class="col-sm-2 col-form-label">Id Kelas</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='id_kelas' value="{{ $data->id_kelas }}"
-                                id="id_kelas">
+                            <select name="id_kelas" id="id_kelas" class="form-select">
+                                <option value="">-- Pilih Id Kelas --</option>
+                                @forelse ($kelasList as $kelas)
+                                    <option value="{{ $kelas->id_kelas }}"
+                                        {{ (old('id_kelas') ?? (Session::get('id_kelas') ?? '')) == $kelas->id_kelas ? 'selected' : '' }}>
+                                        {{ $kelas->id_kelas }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data kelas belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">

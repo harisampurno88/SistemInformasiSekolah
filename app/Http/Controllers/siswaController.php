@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +38,8 @@ class siswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        $kelasList = Kelas::all();
+        return view('siswa.create', compact('kelasList'));
     }
 
     /**
@@ -109,8 +111,10 @@ class siswaController extends Controller
      */
     public function edit(string $id)
     {
-        $data = siswa::where('nisn', $id)->first();
-        return view('siswa.edit')->with('data', $data);
+        $kelasList = Kelas::all();
+        $data = Siswa::where('nisn', $id)->first();
+
+        return view('siswa.edit', compact('kelasList', 'data'));
     }
 
     /**
