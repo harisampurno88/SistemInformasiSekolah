@@ -1,10 +1,10 @@
 @section('head')
-     Data Guru
- @endsection
+    Data Guru
+@endsection
 @extends('layout.template')
 <!-- START FORM -->
 @section('content')
-    <form action='{{ url('guru/'.$data->nip) }}' method='post'>
+    <form action='{{ url('guru/' . $data->nip) }}' method='post'>
         @csrf
         @method('PUT')
         <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -32,18 +32,19 @@
                     <div class="mb-3 row">
                         <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" name='tanggal_lahir' value="{{ $data->tanggal_lahir }}"
-                                id="tanggal_lahir">
+                            <input type="date" class="form-control" name='tanggal_lahir'
+                                value="{{ $data->tanggal_lahir }}" id="tanggal_lahir">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="jenis_kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="jenis_kelamin" value="{{ $data->jenis_kelamin }}"
-                                id="jenis_kelamin">
+                            <select class="form-select" name="jenis_kelamin" id="jenis_kelamin">
                                 <option value="">-- Pilih Jenis Kelamin --</option>
-                                <option value="Laki-Laki">Laki-Laki</option>
-                                <option value="Perempuan">Perempuan</option>
+                                <option value="Laki-Laki" {{ $data->jenis_kelamin == 'Laki-Laki' ? 'selected' : '' }}>
+                                    Laki-Laki</option>
+                                <option value="Perempuan" {{ $data->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                                    Perempuan</option>
                             </select>
                         </div>
                     </div>
@@ -64,18 +65,19 @@
                     <div class="mb-3 row">
                         <label for="id_mata_pelajaran" class="col-sm-2 col-form-label">Id Mata Pelajaran</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='id_mata_pelajaran' value="{{ $data->id_mata_pelajaran }}"
-                                id="id_mata_pelajaran">
+                            <input type="text" class="form-control" name='id_mata_pelajaran'
+                                value="{{ $data->id_mata_pelajaran }}" id="id_mata_pelajaran">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="jabatan" value="{{ $data->jabatan }}
-                                id="jabatan">
+                            <select class="form-select" name="jabatan" id="jabatan">
                                 <option value="">-- Pilih Jabatan --</option>
-                                <option value="PNS">PNS</option>
-                                <option value="HONOR">HONOR</option>
+                                <option value="PNS" {{ $data->jabatan == 'PNS' ? 'selected' : '' }}>
+                                    PNS</option>
+                                <option value="HONOR" {{ $data->jabatan == 'HONOR' ? 'selected' : '' }}>
+                                    HONOR</option>
                             </select>
                         </div>
                     </div>

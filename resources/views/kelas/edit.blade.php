@@ -26,11 +26,14 @@
                     <div class="mb-3 row">
                         <label for="tingkat" class="col-sm-2 col-form-label">Tingkat</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="tingkat" id="tingkat" required>
-                                <option value="" disabled selected>Pilih Tingkat</option>
-                                <option value="X">X</option>
-                                <option value="XI">XI</option>
-                                <option value="XII">XII</option>
+                            <select class="form-select" name="tingkat" id="tingkat">
+                                <option value="">-- Pilih Tingkat --</option>
+                                <option value="X" {{ $data->tingkat == 'X' ? 'selected' : '' }}>
+                                    X</option>
+                                <option value="XI" {{ $data->tingkat == 'XI' ? 'selected' : '' }}>
+                                    XI</option>
+                                <option value="XII" {{ $data->tingkat == 'XII' ? 'selected' : '' }}>
+                                    XII</option>
                             </select>
                         </div>
                     </div>
@@ -44,8 +47,8 @@
                     <div class="mb-3 row">
                         <label for="id_wali_kelas" class="col-sm-2 col-form-label">Id Wali Kelas</label>
                         <div class="col-sm-10">
-                            <input type="integer" class="form-control" name='id_wali_kelas' value="{{ $data->id_wali_kelas }}"
-                                id="id_wali_kelas">
+                            <input type="integer" class="form-control" name='id_wali_kelas'
+                                value="{{ $data->id_wali_kelas }}" id="id_wali_kelas">
                         </div>
                     </div>
                     <div class="mb-3 row">

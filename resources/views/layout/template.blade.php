@@ -13,16 +13,28 @@
     <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
         <div class="container d-flex flex-column flex-md-row align-items-center pb-2 mb-2 gap-3">
             <a href="/siswa" class="d-flex align-items-center text-white text-decoration-none">
-                <span class="fs-4">Data Siswa</span>
+                <span class="fs-4">Siswa</span>
             </a>
             <a href="/guru" class="d-flex align-items-center text-white text-decoration-none">
-                <span class="fs-4">Data Guru</span>
+                <span class="fs-4">Guru</span>
             </a>
             <a href="/kelas" class="d-flex align-items-center text-white text-decoration-none">
-                <span class="fs-4">Data Kelas</span>
+                <span class="fs-4">Kelas</span>
             </a>
             <a href="/matapelajaran" class="d-flex align-items-center text-white text-decoration-none">
-                <span class="fs-4">Data Mata Pelajaran</span>
+                <span class="fs-4">Mata Pelajaran</span>
+            </a>
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <span class="fs-4">Tahun Ajaran</span>
+            </a>
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <span class="fs-4">Nilai</span>
+            </a>
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <span class="fs-4">Jadwal</span>
+            </a>
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <span class="fs-4">Jabatan</span>
             </a>
         </div>
     </nav>
