@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unique(('nama_kelas'));
             $table->enum('tingkat', ['X', 'XI', 'XII']);
             $table->string('jurusan');
-            $table->integer('id_guru');
+            $table->integer('id_wali_kelas');
+
         });
     }
 

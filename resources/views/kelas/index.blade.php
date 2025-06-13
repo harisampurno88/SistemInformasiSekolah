@@ -27,7 +27,7 @@
                      <th class="col-md-3">Nama Kelas</th>
                      <th class="col-md-2">Tingkat</th>
                      <th class="col-md-2">Jurusan</th>
-                     <th class="col-md-2">Id Guru</th>
+                     <th class="col-md-2">Id Wali Kelas</th>
                  </tr>
              </thead>
              <tbody>
@@ -39,7 +39,7 @@
                          <td>{{ $item->nama_kelas }}</td>
                          <td>{{ $item->tingkat }}</td>
                          <td>{{ $item->jurusan }}</td>
-                         <td>{{ $item->id_guru }}</td>
+                         <td>{{ $item->id_wali_kelas }}</td>
                          <td class="d-inline-flex">
                              <a href='{{ url('kelas/' . $item->id_kelas . '/edit') }}' class="btn btn-warning btn-sm">Edit</a>
                              <form onsubmit="return confirm('Yakin akan menghapus data?')" action="{{ url('kelas/' . $item->id_kelas) }}" method="POST">
