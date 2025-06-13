@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class guru extends Model
 {
         protected $fillable = [
-        'id_guru',
         'nip',
         'nama',
         'tanggal_lahir',
@@ -15,7 +14,7 @@ class guru extends Model
         'alamat',
         'no_telepon',
         'id_mata_pelajaran',
-        'jabatan',
+        'id_jabatan',
     ];
     protected $table = 'guru';
     public $timestamps = false;

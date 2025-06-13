@@ -24,10 +24,10 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="id_guru" class="col-sm-2 col-form-label">Id Guru</label>
+                        <label for="nip" class="col-sm-2 col-form-label">Nip</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_guru' value="{{ Session::get('id_guru') }}"
-                                id="id_guru">
+                            <input type="number" class="form-control" name='nip' value="{{ Session::get('nip') }}"
+                                id="nip">
                         </div>
                     </div>
                     <div class="mb-3 row">

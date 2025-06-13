@@ -25,7 +25,7 @@
                      <th class="col-md-1">NO</th>
                      <th class="col-md-2">Id Jadwal</th>
                      <th class="col-md-1">Id Kelas</th>
-                     <th class="col-md-2">Id Guru</th>
+                     <th class="col-md-2">Nip</th>
                      <th class="col-md-2">Id Mata Pelajaran</th>
                      <th class="col-md-2">Hari</th>
                      <th class="col-md-1">Jam Mulai</th>
@@ -39,7 +39,7 @@
                          <td>{{ $i }}</td>
                          <td>{{ $item->id_jadwal }}</td>
                          <td>{{ $item->id_kelas }}</td>
-                         <td>{{ $item->id_guru }}</td>
+                         <td>{{ $item->nip }}</td>
                          <td>{{ $item->id_mata_pelajaran }}</td>
                          <td>{{ $item->hari }}</td>
                          <td>{{ $item->jam_mulai }}</td>

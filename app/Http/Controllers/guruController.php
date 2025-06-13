@@ -18,13 +18,12 @@ class guruController extends Controller
         if (strlen($katakunci)) {
             $data = guru::where('nip', 'like', "%$katakunci%")
                 ->orWhere('tanggal_lahir', 'like', "%$katakunci%")
-                ->orWhere('id_guru', 'like', "%$katakunci%")
                 ->orWhere('nama', 'like', "%$katakunci%")
                 ->orWhere('jenis_kelamin', 'like', "%$katakunci%")
                 ->orWhere('alamat', 'like', "%$katakunci%")
                 ->orWhere('no_telepon', 'like', "%$katakunci%")
                 ->orWhere('id_mata_pelajaran', 'like', "%$katakunci%")
-                ->orWhere('jabatan', 'like', "%$katakunci%")
+                ->orWhere('id_jabatan', 'like', "%$katakunci%")
                 ->paginate(3);
             $data->appends(['katakunci' => $katakunci]);
         } else {
@@ -46,7 +45,6 @@ class guruController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('id_guru', $request->id_guru);
         Session::flash('nip', $request->nip);
         Session::flash('nama', $request->nama);
         Session::flash('tanggal_lahir', $request->tanggal_lahir);
@@ -54,11 +52,10 @@ class guruController extends Controller
         Session::flash('alamat', $request->alamat);
         Session::flash('no_telepon', $request->no_telepon);
         Session::flash('id_mata_pelajaran', $request->id_mata_pelajaran);
-        Session::flash('jabatan', $request->jabatan);
+        Session::flash('id_jabatan', $request->id_jabatan);
 
         $request->validate(
             [
-                'id_guru' => 'required|integer',
                 'nip' => 'required|integer|unique:guru,nip',
                 'nama' => 'required|string|max:255',
                 'tanggal_lahir' => 'required|date',
@@ -66,10 +63,9 @@ class guruController extends Controller
                 'alamat' => 'required|string|max:500',
                 'no_telepon' => 'required|string|max:15',
                 'id_mata_pelajaran' => 'required|integer',
-                'jabatan' => 'required|string|in:PNS,HONOR'
+                'id_jabatan' => 'required|integer|'
             ],
             [
-                'id_guru.required' => 'ID Guru harus diisi',
                 'nip.required' => 'NIP harus diisi',
                 'nip.integer' => 'NIP harus berupa angka',
                 'nip.unique' => 'NIP sudah terdaftar',
@@ -79,11 +75,10 @@ class guruController extends Controller
                 'alamat.required' => 'Alamat harus diisi',
                 'no_telepon.required' => 'No telepon harus diisi',
                 'id_mata_pelajaran' => 'Mata Pelajaran harus dipilih',
-                'jabatan' => 'Jabatan harus dipilih'
+                'id_jabatan' => 'Id Jabatan harus dipilih'
             ]
         );
         $data = [
-            'id_guru' => $request->id_guru,
             'nip' => $request->nip,
             'nama' => $request->nama,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -91,7 +86,7 @@ class guruController extends Controller
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
             'id_mata_pelajaran' => $request->id_mata_pelajaran,
-            'jabatan' => $request->jabatan
+            'id_jabatan' => $request->id_jabatan
         ];
         guru::create($data);
         return redirect()->to('guru')->with('success', 'Data guru berhasil disimpan');
@@ -127,7 +122,7 @@ class guruController extends Controller
                 'alamat' => 'required|string|max:500',
                 'no_telepon' => 'required|string|max:15',
                 'id_mata_pelajaran' => 'required|integer',
-                'jabatan' => 'required|string|in:PNS,HONOR'
+                'id_jabatan' => 'required|integer|'
             ],
             [
                 'nama.required' => 'Nama harus diisi',
@@ -136,7 +131,7 @@ class guruController extends Controller
                 'alamat.required' => 'Alamat harus diisi',
                 'no_telepon.required' => 'No telepon harus diisi',
                 'id_mata_pelajaran' => 'Mata Pelajaran harus dipilih',
-                'jabatan' => 'Jabatan harus dipilih'
+                'id_jabatan' => 'Id Jabatan harus dipilih'
             ]
         );
         $data = [
@@ -146,7 +141,7 @@ class guruController extends Controller
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
             'id_mata_pelajaran' => $request->id_mata_pelajaran,
-            'jabatan' => $request->jabatan
+            'id_jabatan' => $request->id_jabatan
         ];
         guru::where('nip', $id)->update($data);
         return redirect()->to('guru')->with('success', 'Data guru berhasil diubah');

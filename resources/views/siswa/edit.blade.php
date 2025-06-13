@@ -11,12 +11,6 @@
             <a href='{{ url('siswa') }}' class="btn btn-secondary">
                 << Kembali</a>
                     <div class="mb-3 row">
-                        <label for="id_siswa" class="col-sm-2 col-form-label">Id Siswa</label>
-                        <div class="col-sm-10">
-                            {{ $data->id_siswa }}
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
                         <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
                             {{ $data->nisn }}

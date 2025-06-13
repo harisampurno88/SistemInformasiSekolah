@@ -23,7 +23,6 @@
              <thead>
                  <tr>
                      <th class="col-md-1">NO</th>
-                     <th class="col-md-2">Id Guru</th>
                      <th class="col-md-1">NIP</th>
                      <th class="col-md-2">Nama Guru</th>
                      <th class="col-md-2">Tanggal Lahir</th>
@@ -31,7 +30,7 @@
                      <th class="col-md-1">Alamat</th>
                      <th class="col-md-2">No Telepon</th>
                      <th class="col-md-2">Id Mata Pelajaran</th>
-                     <th class="col-md-1">Jabatan</th>
+                     <th class="col-md-1">Id Jabatan</th>
                  </tr>
              </thead>
              <tbody>
@@ -39,7 +38,6 @@
                  @foreach ($data as $item)
                      <tr>
                          <td>{{ $i }}</td>
-                         <td>{{ $item->id_guru }}</td>
                          <td>{{ $item->nip }}</td>
                          <td>{{ $item->nama }}</td>
                          <td>{{ $item->tanggal_lahir }}</td>
@@ -47,7 +45,7 @@
                          <td>{{ $item->alamat }}</td>
                          <td>{{ $item->no_telepon }}</td>
                          <td>{{ $item->id_mata_pelajaran }}</td>
-                         <td>{{ $item->jabatan }}</td>
+                         <td>{{ $item->id_jabatan }}</td>
                          <td class="d-inline-flex">
                              <a href='{{ url('guru/' . $item->nip . '/edit') }}' class="btn btn-warning btn-sm">Edit</a>
                              <form onsubmit="return confirm('Yakin akan menghapus data?')"

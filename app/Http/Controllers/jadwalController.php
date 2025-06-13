@@ -17,7 +17,7 @@ class jadwalController extends Controller
         if (strlen($katakunci)) {
             $data = jadwal::where('id_jadwal', 'like', "%$katakunci%")
                 ->orWhere('id_kelas', 'like', "%$katakunci%")
-                ->orWhere('id_guru', 'like', "%$katakunci%")
+                ->orWhere('nip', 'like', "%$katakunci%")
                 ->orWhere('id_mata_pelajaran', 'like', "%$katakunci%")
                 ->orWhere('hari', 'like', "%$katakunci%")
                 ->orWhere('jam_mulai', 'like', "%$katakunci%")
@@ -45,7 +45,7 @@ class jadwalController extends Controller
     {
         Session::flash('id_jadwal', $request->id_jadwal);
         Session::flash('id_kelas', $request->id_kelas);
-        Session::flash('id_guru', $request->id_guru);
+        Session::flash('nip', $request->nip);
         Session::flash('id_mata_pelajaran', $request->id_mata_pelajaran);
         Session::flash('hari', $request->hari);
         Session::flash('jam_mulai', $request->jam_mulai);
@@ -55,7 +55,7 @@ class jadwalController extends Controller
             [
                 'id_jadwal' => 'required|integer|unique:jadwal,id_jadwal',
                 'id_kelas' => 'required|integer',
-                'id_guru' => 'required|integer',
+                'nip' => 'required|integer',
                 'id_mata_pelajaran' => 'required|integer',
                 'hari' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu',
                 'jam_mulai' => 'required|date_format:H:i',
@@ -65,7 +65,7 @@ class jadwalController extends Controller
                 'id_jadwal.required' => 'ID Jadwal harus diisi',
                 'id_jadwal.unique' => 'ID Jadwal sudah terdaftar',
                 'id_kelas.required' => 'ID Kelas harus diisi',
-                'id_guru.required' => 'ID Guru harus diisi',
+                'nip.required' => 'Nip harus diisi',
                 'id_mata_pelajaran.required' => 'ID Mata Pelajaran harus diisi',
                 'hari.required' => 'Hari harus diisi',
                 'hari.in' => 'Hari harus salah satu dari Senin, Selasa, Rabu, Kamis, Jumat, atau Sabtu',
@@ -77,7 +77,7 @@ class jadwalController extends Controller
         $data = [
             'id_jadwal' => $request->id_jadwal,
             'id_kelas' => $request->id_kelas,
-            'id_guru' => $request->id_guru,
+            'nip' => $request->nip,
             'id_mata_pelajaran' => $request->id_mata_pelajaran,
             'hari' => $request->hari,
             'jam_mulai' => $request->jam_mulai,
@@ -112,7 +112,7 @@ class jadwalController extends Controller
         $request->validate(
             [
                 'id_kelas' => 'required|integer',
-                'id_guru' => 'required|integer',
+                'nip' => 'required|integer',
                 'id_mata_pelajaran' => 'required|integer',
                 'hari' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu',
                 'jam_mulai' => 'required|date_format:H:i',
@@ -120,7 +120,7 @@ class jadwalController extends Controller
             ],
             [
                 'id_kelas.required' => 'ID Kelas harus diisi',
-                'id_guru.required' => 'ID Guru harus diisi',
+                'nip.required' => 'ID Guru harus diisi',
                 'id_mata_pelajaran.required' => 'ID Mata Pelajaran harus diisi',
                 'hari.required' => 'Hari harus diisi',
                 'hari.in' => 'Hari harus salah satu dari Senin, Selasa, Rabu, Kamis, Jumat, atau Sabtu',
@@ -131,7 +131,7 @@ class jadwalController extends Controller
         );
         $data = [
             'id_kelas' => $request->id_kelas,
-            'id_guru' => $request->id_guru,
+            'nip' => $request->nip,
             'id_mata_pelajaran' => $request->id_mata_pelajaran,
             'hari' => $request->hari,
             'jam_mulai' => $request->jam_mulai,

@@ -10,13 +10,6 @@
             <a href='{{ url('guru') }}' class="btn btn-secondary">
                 << Kembali</a>
                     <div class="mb-3 row">
-                        <label for="id_guru" class="col-sm-2 col-form-label">Id Guru</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_guru' value="{{ Session::get('id_guru') }}"
-                                id="id_guru">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
                         <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" name='nip' value="{{ Session::get('nip') }}"
@@ -69,15 +62,11 @@
                                 value="{{ Session::get('id_mata_pelajaran') }}" id="id_mata_pelajaran">
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                     <div class="mb-3 row">
+                        <label for="id_jabatan" class="col-sm-2 col-form-label">Id Jabatan</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="jabatan" value="{{ Session::get('jabatan') }}"
-                                id="jabatan">
-                                <option value="">-- Pilih Jabatan --</option>
-                                <option value="PNS">PNS</option>
-                                <option value="HONOR">HONOR</option>
-                            </select>
+                            <input type="number" class="form-control" name='id_jabatan'
+                                value="{{ Session::get('id_jabatan') }}" id="id_jabatan">
                         </div>
                     </div>
                     <div class="mb-3 row">

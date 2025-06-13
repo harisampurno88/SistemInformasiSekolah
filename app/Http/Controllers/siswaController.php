@@ -18,7 +18,6 @@ class siswaController extends Controller
         if (strlen($katakunci)) {
             $data = siswa::where('nisn', 'like', "%$katakunci%")
                 ->orWhere('tanggal_lahir', 'like', "%$katakunci%")
-                ->orWhere('id_siswa', 'like', "%$katakunci%")
                 ->orWhere('nama', 'like', "%$katakunci%")
                 ->orWhere('jenis_kelamin', 'like', "%$katakunci%")
                 ->orWhere('alamat', 'like', "%$katakunci%")
@@ -47,7 +46,6 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('id_siswa', $request->id_siswa);
         Session::flash('nisn', $request->nisn);
         Session::flash('nama', $request->nama);
         Session::flash('tanggal_lahir', $request->tanggal_lahir);
@@ -59,7 +57,6 @@ class siswaController extends Controller
 
         $request->validate(
             [
-                'id_siswa' => 'required|integer',
                 'nisn' => 'required|integer|unique:siswa,nisn',
                 'nama' => 'required|string|max:255',
                 'tanggal_lahir' => 'required|date',
@@ -70,7 +67,6 @@ class siswaController extends Controller
                 'id_tahun_ajaran' => 'required|integer'
             ],
             [
-                'id_siswa.required' => 'ID Siswa harus diisi',
                 'nisn.required' => 'NISN harus diisi',
                 'nisn.integer' => 'NISN harus berupa angka',
                 'nisn.unique' => 'NISN sudah terdaftar',
@@ -84,7 +80,6 @@ class siswaController extends Controller
             ]
         );
         $data = [
-            'id_siswa' => $request->id_siswa,
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'tanggal_lahir' => $request->tanggal_lahir,

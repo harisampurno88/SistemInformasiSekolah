@@ -23,7 +23,6 @@
              <thead>
                  <tr>
                      <th class="col-md-1">NO</th>
-                     <th class="col-md-2">Id Siswa</th>
                      <th class="col-md-1">NISN</th>
                      <th class="col-md-2">Nama Siswa</th>
                      <th class="col-md-2">Tanggal Lahir</th>
@@ -39,7 +38,6 @@
                  @foreach ($data as $item)
                      <tr>
                          <td>{{ $i }}</td>
-                         <td>{{ $item->id_siswa }}</td>
                          <td>{{ $item->nisn }}</td>
                          <td>{{ $item->nama }}</td>
                          <td>{{ $item->tanggal_lahir }}</td>

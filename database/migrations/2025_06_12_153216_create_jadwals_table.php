@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id_jadwal');
             $table->primary('id_jadwal');
             $table->integer('id_kelas');
-            $table->integer('id_guru');
+            $table->integer('nip');
             $table->integer('id_mata_pelajaran');
             $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']);
             $table->time('jam_mulai');
