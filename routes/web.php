@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\guruController;
+use App\Http\Controllers\jabatanController;
 use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\matapelajaranController;
@@ -26,3 +27,5 @@ Route::resource('tahunajaran', tahunajaranController::class);
 Route::resource('nilai', nilaiController::class);
 
 Route::resource('jadwal', jadwalController::class);
+
+Route::resource('jabatan', jabatanController::class);

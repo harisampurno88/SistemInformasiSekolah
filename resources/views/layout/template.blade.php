@@ -33,7 +33,7 @@
             <a href="/jadwal" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Jadwal</span>
             </a>
-            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <a href="/jabatan" class="d-flex align-items-center text-white text-decoration-none">
                 <span class="fs-4">Jabatan</span>
             </a>
         </div>
