@@ -12,4 +12,9 @@ class jabatan extends Model
     ];
     protected $table = 'jabatan';
     public $timestamps = false;
+
+    public function guru()
+    {
+        return $this->hasMany(guru::class, 'id_jabatan', 'id_jabatan');
+    }
 }

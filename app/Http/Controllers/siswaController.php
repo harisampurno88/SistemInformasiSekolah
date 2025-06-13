@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kelas;
 use App\Models\Siswa;
+use App\Models\tahunajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -38,7 +39,8 @@ class siswaController extends Controller
     public function create()
     {
         $kelasList = Kelas::all();
-        return view('siswa.create', compact('kelasList'));
+        $tahunajaranList = tahunajaran::all();
+        return view('siswa.create', compact('kelasList', 'tahunajaranList'));
     }
 
     /**
@@ -106,10 +108,11 @@ class siswaController extends Controller
      */
     public function edit(string $id)
     {
-        $kelasList = Kelas::all();
+        $kelasList = kelas::all();
+        $tahunAjaranList = tahunajaran::all();
         $data = Siswa::where('nisn', $id)->first();
 
-        return view('siswa.edit', compact('kelasList', 'data'));
+        return view('siswa.edit', compact('kelasList', 'tahunAjaranList', 'data'));
     }
 
     /**

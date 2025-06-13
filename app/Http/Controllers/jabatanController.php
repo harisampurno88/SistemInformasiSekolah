@@ -84,7 +84,7 @@ class jabatanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $request->validate(
+        $request->validate(
             [
                 'nama_jabatan' => 'required|string|max:100|unique:jabatan,nama_jabatan'
             ],
@@ -106,6 +106,12 @@ class jabatanController extends Controller
      */
     public function destroy(string $id)
     {
+        $jabatan = jabatan::where('id_jabatan', $id)->firstOrFail();
+
+        if ($jabatan->guru()->exists()) {
+            return redirect()->to('jabatan')->with('error', 'Tidak bisa menghapus Jabatan karena masih memiliki guru.');
+        }
+
         jabatan::where('id_jabatan', $id)->delete();
         return redirect()->to('jabatan')->with('success', 'Data Jabatan berhasil dihapus');
     }

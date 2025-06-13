@@ -13,4 +13,9 @@ class matapelajaran extends Model
     ];
     protected $table = 'matapelajaran';
     public $timestamps = false;
+
+    public function guru()
+    {
+        return $this->hasMany(guru::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
+    }
 }

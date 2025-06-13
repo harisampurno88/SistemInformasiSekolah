@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('guru', function (Blueprint $table) {
+        Schema::create('guru', function (Blueprint $table) {
             $table->primary('nip');
             $table->integer('nip');
             $table->unique('nip');
@@ -20,8 +20,14 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->text('alamat');
             $table->string('no_telepon', 15);
-            $table->integer('id_mata_pelajaran');
-            $table->integer('id_jabatan');
+            $table->foreign('id_mata_pelajaran')
+                ->references('id_mata_pelajaran')
+                ->on('matapelajaran')
+                ->onDelete('restrict');
+            $table->foreign('id_jabatan')
+                ->references('id_jabatan')
+                ->on('jabatan')
+                ->onDelete('restrict');
         });
     }
 

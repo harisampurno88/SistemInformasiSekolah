@@ -14,4 +14,9 @@ class tahunajaran extends Model
     ];
     protected $table = 'tahunajaran';
     public $timestamps = false;
+
+    public function siswa()
+    {
+        return $this->hasMany(siswa::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
+    }
 }

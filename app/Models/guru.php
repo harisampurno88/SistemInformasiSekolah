@@ -18,4 +18,14 @@ class guru extends Model
     ];
     protected $table = 'guru';
     public $timestamps = false;
+
+    public function matapelajaran()
+    {
+        return $this->belongsTo(matapelajaran::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
+    }
+
+    public function jabatan()
+    {
+        return $this->belongsTo(jabatan::class, 'id_jabatan', 'id_jabatan');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tahunajaran;
+use APP\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -131,6 +132,12 @@ class tahunajaranController extends Controller
      */
     public function destroy(string $id)
     {
+       $tahunajaran = tahunajaran::where('id_tahun_ajaran', $id)->firstOrFail();
+
+        if ($tahunajaran->siswa()->exists()) {
+            return redirect()->to('tahunajaran')->with('error', 'Tidak bisa menghapus tahun ajaran karena masih memiliki siswa.');
+        }
+
         tahunajaran::where('id_tahun_ajaran', $id)->delete();
         return redirect()->to('tahunajaran')->with('success', 'Data Tahun Ajaran berhasil dihapus');
     }

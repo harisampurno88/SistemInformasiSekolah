@@ -25,7 +25,10 @@ return new class extends Migration
                 ->references('id_kelas')
                 ->on('kelas')
                 ->onDelete('restrict');
-            $table->integer('id_tahun_ajaran');
+            $table->foreign('id_tahun_ajaran')
+                ->reference('id_tahun_ajaran')
+                ->on('tahunajaran')
+                ->onDelet('restrict');
         });
     }
 

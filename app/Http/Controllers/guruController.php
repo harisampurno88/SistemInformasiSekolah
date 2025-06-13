@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\guru;
+use App\Models\jabatan;
+use App\Models\matapelajaran;
 use App\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +39,9 @@ class guruController extends Controller
      */
     public function create()
     {
-        return view('guru.create');
+        $matapelajaranList = matapelajaran::all();
+        $jabatanList = jabatan::all();
+        return view('guru.create', compact('matapelajaranList', 'jabatanList'));
     }
 
     /**
@@ -105,8 +109,11 @@ class guruController extends Controller
      */
     public function edit(string $id)
     {
-        $data = guru::where('nip', $id)->first();
-        return view('guru.edit')->with('data', $data);
+        $matapelajaranList = matapelajaran::all();
+        $jabatanList = jabatan::all();
+        $data = Siswa::where('nisn', $id)->first();
+
+        return view('guru.edit', compact('matapelajaranList', 'jabatanList' , 'data'));
     }
 
     /**

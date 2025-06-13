@@ -115,6 +115,12 @@ class matapelajaranController extends Controller
      */
     public function destroy(string $id)
     {
+       $matapelajaran = matapelajaran::where('id_mata_pelajaran', $id)->firstOrFail();
+
+        if ($matapelajaran->guru()->exists()) {
+            return redirect()->to('matapelajaran')->with('error', 'Tidak bisa menghapus mata pelajaran karena masih memiliki guru.');
+        }
+
         matapelajaran::where('id_mata_pelajaran', $id)->delete();
         return redirect()->to('matapelajaran')->with('success', 'Data Mata Pelajaran berhasil dihapus');
     }
