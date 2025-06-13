@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->primary('nisn');
-            $table->integer('nisn');
-            $table->unique('nisn');
+            $table->integer('nisn')->primary();
             $table->string('nama');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
@@ -25,10 +23,11 @@ return new class extends Migration
                 ->references('id_kelas')
                 ->on('kelas')
                 ->onDelete('restrict');
+            $table->unsignedInteger('id_tahun_ajaran');
             $table->foreign('id_tahun_ajaran')
-                ->reference('id_tahun_ajaran')
+                ->references('id_tahun_ajaran')
                 ->on('tahunajaran')
-                ->onDelet('restrict');
+                ->onDelete('restrict');
         });
     }
 

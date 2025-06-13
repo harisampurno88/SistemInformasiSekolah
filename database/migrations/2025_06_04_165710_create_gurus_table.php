@@ -20,10 +20,12 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->text('alamat');
             $table->string('no_telepon', 15);
+            $table->unsignedInteger('id_mata_pelajaran');
             $table->foreign('id_mata_pelajaran')
                 ->references('id_mata_pelajaran')
                 ->on('matapelajaran')
                 ->onDelete('restrict');
+            $table->unsignedInteger('id_jabatan');
             $table->foreign('id_jabatan')
                 ->references('id_jabatan')
                 ->on('jabatan')

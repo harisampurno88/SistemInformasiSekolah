@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tahunajaran', function (Blueprint $table) {
-            $table->increments('id_tahun_ajaran');
+            $table->unsignedInteger('id_tahun_ajaran');
             $table->primary('id_tahun_ajaran');
             $table->year('tahun_mulai');
             $table->year('tahun_selesai');
