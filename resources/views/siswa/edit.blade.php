@@ -75,8 +75,17 @@
                     <div class="mb-3 row">
                         <label for="id_tahun_ajaran" class="col-sm-2 col-form-label">Id Tahun Ajaran</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='id_tahun_ajaran'
-                                value="{{ $data->id_tahun_ajaran }}" id="id_tahun_ajaran">
+                            <select name="id_tahun_ajaran" id="id_tahun_ajaran" class="form-select">
+                                <option value="">-- Pilih Id Tahun Ajaran --</option>
+                                @forelse ($tahunAjaranList as $tahunajaran)
+                                    <option value="{{ $tahunajaran->id_tahun_ajaran }}"
+                                        {{ old('id_tahun_ajaran', $data->id_tahun_ajaran ?? '') == $tahunajaran->id_tahun_ajaran ? 'selected' : '' }}>
+                                        {{ $tahunajaran->id_tahun_ajaran }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Tahun Ajaran belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">

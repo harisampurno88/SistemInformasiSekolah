@@ -111,7 +111,7 @@ class guruController extends Controller
     {
         $matapelajaranList = matapelajaran::all();
         $jabatanList = jabatan::all();
-        $data = Siswa::where('nisn', $id)->first();
+        $data = guru::where('nip', $id)->first();
 
         return view('guru.edit', compact('matapelajaranList', 'jabatanList' , 'data'));
     }

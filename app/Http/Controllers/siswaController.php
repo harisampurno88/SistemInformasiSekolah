@@ -39,8 +39,8 @@ class siswaController extends Controller
     public function create()
     {
         $kelasList = Kelas::all();
-        $tahunajaranList = tahunajaran::all();
-        return view('siswa.create', compact('kelasList', 'tahunajaranList'));
+        $tahunAjaranList = tahunajaran::all();
+        return view('siswa.create', compact('kelasList', 'tahunAjaranList'));
     }
 
     /**

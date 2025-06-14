@@ -59,15 +59,33 @@
                     <div class="mb-3 row">
                         <label for="id_mata_pelajaran" class="col-sm-2 col-form-label">Id Mata Pelajaran</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='id_mata_pelajaran'
-                                value="{{ $data->id_mata_pelajaran }}" id="id_mata_pelajaran">
+                            <select name="id_mata_pelajaran" id="id_mata_pelajaran" class="form-select">
+                                <option value="">-- Pilih Id Mata Pelajaran --</option>
+                                @forelse ($matapelajaranList as $matapelajaran)
+                                    <option value="{{ $matapelajaran->id_mata_pelajaran }}"
+                                        {{ old('id_mata_pelajaran', $data->id_mata_pelajaran ?? '') == $matapelajaran->id_mata_pelajaran ? 'selected' : '' }}>
+                                        {{ $matapelajaran->id_mata_pelajaran }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Mata Pelajaran belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
-                     <div class="mb-3 row">
+                    <div class="mb-3 row">
                         <label for="id_jabatan" class="col-sm-2 col-form-label">Id Jabatan</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_jabatan'
-                                value="{{ Session::get('id_jabatan') }}" id="id_jabatan">
+                            <select name="id_jabatan" id="id_jabatan" class="form-select">
+                                <option value="">-- Pilih Id Jabatan --</option>
+                                @forelse ($jabatanList as $jabatan)
+                                    <option value="{{ $jabatan->id_jabatan }}"
+                                        {{ old('id_jabatan', $data->id_jabatan ?? '') == $jabatan->id_jabatan ? 'selected' : '' }}>
+                                        {{ $jabatan->id_jabatan }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Jabatan belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">

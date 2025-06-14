@@ -76,7 +76,7 @@
                         <div class="col-sm-10">
                             <select name="id_tahun_ajaran" id="id_tahun_ajaran" class="form-select">
                                 <option value="">-- Pilih Id Tahun Ajaran --</option>
-                                @forelse ($tahunajaranList as $tahunajaran)
+                                @forelse ($tahunAjaranList as $tahunajaran)
                                     <option value="{{ $tahunajaran->id_tahun_ajaran }}"
                                         {{ (old('id_tahun_ajaran') ?? (Session::get('id_tahun_ajaran') ?? '')) == $tahunajaran->id_tahun_ajaran ? 'selected' : '' }}>
                                         {{ $tahunajaran->id_tahun_ajaran }}

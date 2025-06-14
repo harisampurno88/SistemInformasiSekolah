@@ -40,8 +40,8 @@ class nilaiController extends Controller
     {
         $siswaList = siswa::all();
         $matapelajaranList = matapelajaran::all();
-        $tahunajaranList = tahunajaran::all();
-        return view('nilai.create', compact('siswaList', 'matapelajaranList' ,'tahunajaranList'));
+        $tahunAjaranList = tahunajaran::all();
+        return view('nilai.create', compact('siswaList', 'matapelajaranList' ,'tahunAjaranList'));
     }
 
     /**
