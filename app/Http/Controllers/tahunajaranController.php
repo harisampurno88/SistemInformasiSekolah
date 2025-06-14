@@ -138,6 +138,10 @@ class tahunajaranController extends Controller
             return redirect()->to('tahunajaran')->with('error', 'Tidak bisa menghapus tahun ajaran karena masih memiliki siswa.');
         }
 
+        if ($tahunajaran->nilai()->exists()) {
+            return redirect()->to('tahunajaran')->with('error', 'Tidak bisa menghapus tahun ajaran karena masih memiliki siswa.');
+        }
+
         tahunajaran::where('id_tahun_ajaran', $id)->delete();
         return redirect()->to('tahunajaran')->with('success', 'Data Tahun Ajaran berhasil dihapus');
     }

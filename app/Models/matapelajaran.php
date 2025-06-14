@@ -18,4 +18,9 @@ class matapelajaran extends Model
     {
         return $this->hasMany(guru::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
     }
+
+    public function nilai()
+    {
+        return $this->hasMany(nilai::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
+    }
 }

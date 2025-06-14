@@ -17,4 +17,19 @@ class nilai extends Model
     ];
     protected $table = 'nilai';
     public $timestamps = false;
+
+    public function siswa()
+    {
+        return $this->belongsTo(siswa::class, 'nisn', 'nisn');
+    }
+
+    public function matapelajaran()
+    {
+        return $this->belongsTo(matapelajaran::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
+    }
+
+    public function tahunajaran()
+    {
+        return $this->belongsTo(tahunajaran::class, 'id_tahun_ajaran', 'id_tahun_ajaran');
+    }
 }

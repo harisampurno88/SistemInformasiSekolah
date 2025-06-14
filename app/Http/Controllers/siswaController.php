@@ -158,7 +158,13 @@ class siswaController extends Controller
      */
     public function destroy(string $id)
     {
-        siswa::where('nisn', $id)->delete();
-        return redirect()->to('siswa')->with('success', 'Data siswa berhasil dihapus');
+        $siswa = Siswa::where('nisn', $id)->firstOrFail();
+
+        if ($siswa->nilai()->exists()) {
+            return redirect()->to('siswa')->with('error', 'Tidak bisa menghapus Siswa karena masih memiliki Nilai');
+        }
+
+        Siswa::where('nisn', $id)->delete();
+        return redirect()->to('siswa')->with('success', 'Data Siswa berhasil dihapus');
     }
 }
