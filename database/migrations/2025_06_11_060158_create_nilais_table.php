@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->increments('id_nilai');
             $table->primary('id_nilai');
-            $table->integer('id_siswa');
+            $table->integer('nisn');
             $table->integer('id_mata_pelajaran');
             $table->integer('id_tahun_ajaran');
             $table->decimal('nilai_tugas', 5, 2);
             $table->decimal('nilai_uts', 5, 2);
             $table->decimal('nilai_uas', 5, 2);
-            $table->integer('kehadiran');
-            $table->text('catatan_guru');
         });
     }
 

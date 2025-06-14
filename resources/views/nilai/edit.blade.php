@@ -17,10 +17,10 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="id_siswa" class="col-sm-2 col-form-label">Id Siswa</label>
+                        <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_siswa' value="{{ $data->id_siswa }}"
-                                id="id_siswa">
+                            <input type="number" class="form-control" name='nisn' value="{{ $data->nisn }}"
+                                id="nisn">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -56,20 +56,6 @@
                         <div class="col-sm-10">
                             <input type="number" class="form-control" name='nilai_uas' value="{{ $data->nilai_uas }}"
                                 id="nilai_uas">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="kehadiran" class="col-sm-2 col-form-label">Kehadiran</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" name='kehadiran'
-                                value="{{ $data->kehadiran }}" id="kehadiran">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="catatan_guru" class="col-sm-2 col-form-label">Catatan Guru</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name='catatan_guru' value="{{ $data->catatan_guru }}"
-                                id="catatan_guru">
                         </div>
                     </div>
                     <div class="mb-3 row">

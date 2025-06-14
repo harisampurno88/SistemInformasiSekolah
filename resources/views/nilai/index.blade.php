@@ -24,14 +24,12 @@
                  <tr>
                      <th class="col-md-1">NO</th>
                      <th class="col-md-2">Id Nilai</th>
-                     <th class="col-md-1">Id Siswa</th>
+                     <th class="col-md-1">NISN</th>
                      <th class="col-md-2">Id Mata Pelajaran</th>
                      <th class="col-md-2">Id Tahun Ajaran</th>
                      <th class="col-md-2">Nilai Tugas</th>
                      <th class="col-md-1">Nilai UTS</th>
                      <th class="col-md-2">Nilai UAS</th>
-                     <th class="col-md-2">Kehadiran</th>
-                     <th class="col-md-1">Catatan Guru</th>
                  </tr>
              </thead>
              <tbody>
@@ -40,14 +38,12 @@
                      <tr>
                          <td>{{ $i }}</td>
                          <td>{{ $item->id_nilai }}</td>
-                         <td>{{ $item->id_siswa }}</td>
+                         <td>{{ $item->nisn }}</td>
                          <td>{{ $item->id_mata_pelajaran }}</td>
                          <td>{{ $item->id_tahun_ajaran }}</td>
                          <td>{{ $item->nilai_tugas }}</td>
                          <td>{{ $item->nilai_uts }}</td>
                          <td>{{ $item->nilai_uas }}</td>
-                         <td>{{ $item->kehadiran }}</td>
-                         <td>{{ $item->catatan_guru }}</td>
                          <td class="d-inline-flex">
                              <a href='{{ url('nilai/' . $item->id_nilai . '/edit') }}' class="btn btn-warning btn-sm">Edit</a>
                              <form onsubmit="return confirm('Yakin akan menghapus data?')"
