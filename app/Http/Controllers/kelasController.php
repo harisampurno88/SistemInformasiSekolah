@@ -134,6 +134,10 @@ class kelasController extends Controller
             return redirect()->to('kelas')->with('error', 'Tidak bisa menghapus kelas karena masih memiliki siswa.');
         }
 
+        if ($kelas->jadwal()->exists()) {
+            return redirect()->to('kelas')->with('error', 'Tidak bisa menghapus kelas karena masih memiliki jadwal.');
+        }
+
         // Jika tidak ada siswa, lanjutkan hapus
         kelas::where('id_kelas', $id)->delete();
         return redirect()->to('kelas')->with('success', 'Data kelas berhasil dihapus');

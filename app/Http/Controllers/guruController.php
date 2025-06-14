@@ -159,7 +159,15 @@ class guruController extends Controller
      */
     public function destroy(string $id)
     {
+         $guru = guru::where('nip', $id)->firstOrFail();
+
+        // Cek apakah masih ada siswa terkait
+        if ($guru->jadwal()->exists()) {
+            return redirect()->to('guru')->with('error', 'Tidak bisa menghapus guru karena masih memiliki jadwal.');
+        }
+
+        // Jika tidak ada siswa, lanjutkan hapus
         guru::where('nip', $id)->delete();
-        return redirect()->to('guru')->with('success', 'Data guru berhasil dihapus');
+        return redirect()->to('guru')->with('success', 'Data Guru berhasil dihapus');
     }
 }

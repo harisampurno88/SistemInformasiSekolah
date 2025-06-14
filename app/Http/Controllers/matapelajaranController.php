@@ -125,6 +125,10 @@ class matapelajaranController extends Controller
             return redirect()->to('matapelajaran')->with('error', 'Tidak bisa menghapus mata pelajaran karena masih memiliki nilai.');
         }
 
+        if ($matapelajaran->jadwal()->exists()) {
+            return redirect()->to('matapelajaran')->with('error', 'Tidak bisa menghapus mata pelajaran karena masih memiliki jadwal.');
+        }
+
         matapelajaran::where('id_mata_pelajaran', $id)->delete();
         return redirect()->to('matapelajaran')->with('success', 'Data Mata Pelajaran berhasil dihapus');
     }

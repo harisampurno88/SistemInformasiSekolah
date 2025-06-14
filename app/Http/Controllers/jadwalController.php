@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\guru;
 use App\Models\jadwal;
+use App\Models\kelas;
+use App\Models\matapelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -35,7 +38,10 @@ class jadwalController extends Controller
      */
     public function create()
     {
-        return view('jadwal.create');
+        $guruList = guru::all();
+        $kelasList = kelas::all();
+        $matapelajaranList = matapelajaran::all();
+        return view('jadwal.create', compact('guruList', 'matapelajaranList' ,'kelasList'));
     }
 
     /**
@@ -100,8 +106,12 @@ class jadwalController extends Controller
      */
     public function edit(string $id)
     {
+        $guruList = guru::all();
+        $kelasList = kelas::all();
+        $matapelajaranList = matapelajaran::all();
         $data = jadwal::where('id_jadwal', $id)->first();
-        return view('jadwal.edit')->with('data', $data);
+
+        return view('jadwal.edit', compact('guruList', 'matapelajaranList' ,'kelasList', 'data'));
     }
 
     /**

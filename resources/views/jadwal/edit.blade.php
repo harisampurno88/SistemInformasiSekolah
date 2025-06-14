@@ -19,22 +19,49 @@
                     <div class="mb-3 row">
                         <label for="id_kelas" class="col-sm-2 col-form-label">Id Kelas</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_kelas' value="{{ $data->id_kelas }}"
-                                id="id_kelas">
+                            <select name="id_kelas" id="id_kelas" class="form-select">
+                                <option value="">-- Pilih Id Kelas --</option>
+                                @forelse ($kelasList as $kelas)
+                                    <option value="{{ $kelas->id_kelas }}"
+                                        {{ old('id_kelas', $data->id_kelas ?? '') == $kelas->id_kelas ? 'selected' : '' }}>
+                                        {{ $kelas->id_kelas }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Kelas belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="nip" class="col-sm-2 col-form-label">Nip</label>
+                        <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='nip' value="{{ $data->nip }}"
-                                id="nip">
+                            <select name="nip" id="nip" class="form-select">
+                                <option value="">-- Pilih NIP --</option>
+                                @forelse ($guruList as $guru)
+                                    <option value="{{ $guru->nip }}"
+                                        {{ old('nip', $data->nip ?? '') == $guru->nip ? 'selected' : '' }}>
+                                        {{ $guru->nip }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Guru belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="id_mata_pelajaran" class="col-sm-2 col-form-label">Id Mata Pelajaran</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name='id_mata_pelajaran'
-                                value="{{ $data->id_mata_pelajaran }}" id="id_mata_pelajaran">
+                            <select name="id_mata_pelajaran" id="id_mata_pelajaran" class="form-select">
+                                <option value="">-- Pilih Id Mata Pelajaran --</option>
+                                @forelse ($matapelajaranList as $matapelajaran)
+                                    <option value="{{ $matapelajaran->id_mata_pelajaran }}"
+                                        {{ old('id_mata_pelajaran', $data->id_mata_pelajaran ?? '') == $matapelajaran->id_mata_pelajaran ? 'selected' : '' }}>
+                                        {{ $matapelajaran->id_mata_pelajaran }}
+                                    </option>
+                                @empty
+                                    <option disabled>Data Mata Pelajaran belum tersedia</option>
+                                @endforelse
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">

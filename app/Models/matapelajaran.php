@@ -23,4 +23,9 @@ class matapelajaran extends Model
     {
         return $this->hasMany(nilai::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
     }
+
+    public function jadwal()
+    {
+        return $this->hasMany(jadwal::class, 'id_mata_pelajaran', 'id_mata_pelajaran');
+    }
 }

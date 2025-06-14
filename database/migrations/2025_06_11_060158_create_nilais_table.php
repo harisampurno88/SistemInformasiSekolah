@@ -20,7 +20,7 @@ return new class extends Migration
                 ->references('nisn')
                 ->on('siswa')
                 ->onDelete('restrict');
-            $table->unsignedInteger('id_mata_pelajaran');
+            $table->integer('id_mata_pelajaran');
             $table->foreign('id_mata_pelajaran')
                 ->references('id_mata_pelajaran')
                 ->on('matapelajaran')
